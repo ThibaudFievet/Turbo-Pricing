@@ -1,4 +1,4 @@
-# 📈 Python Turbo Warrant Stop-Loss Calculato
+# 📈 Python Turbo Warrant Stop-Loss Calculator
 
 > **Project Context:** This tool was developed in parallel with my studies over a one-month period in 2024 when I started trading turbos on my own.
 
