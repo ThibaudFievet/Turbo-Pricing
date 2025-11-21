@@ -93,9 +93,10 @@ def main():
     for mise in mises:
         prix_turbo_sl = calcul_stop_loss(mise, prix_turbo, perte_max)
         if prix_turbo_sl is not None:
-            print(f" {prix_turbo_sl:15.3f} ")
+            print(f" {prix_turbo_sl:3f} ")
         else:
             print(f" Erreur  ")
 
 if __name__ == "__main__":
+
     main()
