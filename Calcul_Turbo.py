@@ -16,8 +16,8 @@ def calcul_stop_loss(mise_initiale, prix_turbo, perte_max):
     """
     Calcule le prix du turbo en Stop Loss.
     """
-    quantite_turbos = int(mise_initiale // prix_turbo) #Quantity can't a float
-    prix_turbo_sl = prix_turbo - (perte_max / quantite_turbos) #ex: 2.50−200/400 = 2.50−0.5 = 2.00
+    quantite_turbos = int(mise_initiale // prix_turbo) #Quantity can't be a float
+    prix_turbo_sl = prix_turbo - (perte_max / quantite_turbos) #e.g: 2.50−200/400 = 2.50−0.5 = 2.00
 
     if prix_turbo_sl <= 0:
         raise ValueError("Stop Loss invalide")
@@ -26,15 +26,12 @@ def calcul_stop_loss(mise_initiale, prix_turbo, perte_max):
 
 
 def main():
-    print("\n Calcul du Stop Loss pour un Turbo \n")
 
     try:
-        # Saisie et validation du type de turbo
         type_turbo = input(" Type de turbo (call/put) : ").strip().lower() # in order to avoid errors
         if type_turbo not in ["call", "put"]:
             raise ValueError("Le type de turbo doit être 'call' ou 'put'.")
 
-        # Choix de calcul du prix du turbo
         mode_calcul = input(" Voulez-vous calculer le prix d'achat du turbo ? (o/n) : ").strip().lower()
 
         if mode_calcul == "o":
@@ -48,7 +45,6 @@ def main():
                     raise ValueError("Pour un put, le prix du sous jacent ne peut pas être supérieur ou égal au strike")
             parite = float(input(" Parité du turbo : "))
 
-            # Calcul du prix du turbo en fonction des paramètres
             prix_turbo = calcul_prix_turbo(prix_sous_jacent, strike, parite, type_turbo)
             print(f"\n Prix du Turbo utilisé : {prix_turbo:.3f} €\n")
 
@@ -57,7 +53,6 @@ def main():
             if prix_turbo <= 0:
                 raise ValueError("Le prix du turbo doit être positif.")
 
-        # Saisie des autres paramètres
         perte_max = float(input(" Perte maximale autorisée (€) : "))
         mises = []
         erreur_detectee = []
@@ -87,7 +82,6 @@ def main():
         print(f"\n Erreur de saisie : {e}\n")
         return
 
-    # Calcul et affichage des Stop Loss
     print(" Prix Turbo SL (€) ")
 
     for mise in mises:
@@ -98,5 +92,5 @@ def main():
             print(f" Erreur  ")
 
 if __name__ == "__main__":
-
     main()
+
